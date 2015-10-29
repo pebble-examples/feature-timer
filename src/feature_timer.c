@@ -12,7 +12,7 @@ static void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_frame(window_layer);
 
-  s_text_layer = text_layer_create(bounds);
+  s_text_layer = text_layer_create(PBL_IF_RECT_ELSE(bounds, grect_inset(bounds, GEdgeInsets(74, 0, 0, 0))));
   text_layer_set_text(s_text_layer, "Waiting for timer...");
   text_layer_set_font(s_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
   text_layer_set_text_alignment(s_text_layer, GTextAlignmentCenter);
